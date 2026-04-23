@@ -420,9 +420,9 @@ class ContentController extends Controller
                     $validated['duration'] = $content->duration;
                 }
             }
-
+            
             // Update data konten ke database
-            $content->update([
+            $content->update([ //validated itu hasil validasi yang sudah dicek, jadi aman buat langsung disimpan
                 'title' => $validated['title'],
                 'description' => $validated['description'],
                 'repeat_days' => implode(',', $repeatDays),
@@ -437,14 +437,14 @@ class ContentController extends Controller
                 'file_server' => $fileServerName,
             ]);
 
-            // Update pivot (relasi ke departemen)
+            // Update pivot (relasi ke departemen) //pivot itu buat ngatur data tambahan di tabel relasi many-to-many, kalo disini ini buat atur is_visible_to_parent
             $isVisibleToParent = $request->input('is_visible_to_parent', '0') === '1';
             $content->departments()->updateExistingPivot($userDept, [
                 'is_visible_to_parent' => $isVisibleToParent
             ]);
 
             // Commit transaksi
-            DB::commit();
+            DB::commit(); //komit di database, artinya semua perubahan yang dilakukan di database selama transaksi ini dianggap berhasil dan disimpan permanen. Kalau ada error sebelum commit, maka semua perubahan akan dibatalkan (rollback) otomatis, jadi database tetap konsisten.
 
             return redirect()->route('content.index', [
                 'status_filter' => $request->input('status_filter'),

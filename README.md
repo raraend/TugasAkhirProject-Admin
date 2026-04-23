@@ -1,66 +1,131 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# UMY Digital Signage Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> Tugas Akhir S1 Teknik Informatika — Universitas Muhammadiyah Yogyakarta
 
-## About Laravel
+![Skripsi](https://img.shields.io/badge/Tugas_Akhir-S1_TI_UMY-brightgreen)
+![Versi](https://img.shields.io/badge/versi-1.0.0-blue)
+![Framework](https://img.shields.io/badge/framework-Laravel-red?logo=laravel&logoColor=white)
+![User](https://img.shields.io/badge/User-Admin-green)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+UMY Digital Signage Management System hadir sebagai solusi terpusat untuk mengelola, menjadwalkan, dan menayangkan konten informasi pada layar LCD di seluruh lingkungan **Universitas Muhammadiyah Yogyakarta**. Dengan sistem hak akses hierarkis dan fitur kolaborasi konten lintas **departemen**, setiap **unit kerja**, **fakultas**, dan **program studi** kini dapat menyampaikan informasi secara tepat sasaran tanpa tumpang tindih dan tanpa kerumitan.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+> [!NOTE]
+> Repositori ini adalah sisi **Admin** (web manajemen konten). Untuk aplikasi display layar LCD, lihat repositori [TugasAkhirProject-User](https://github.com/raraend/TugasAkhirProject-USER.git).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Daftar Isi
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [Screenshot](#screenshot)
+- [Fitur](#fitur)
+- [Tech Stack](#tech-stack)
+- [Arsitektur Sistem](#arsitektur-sistem)
+- [Struktur Folder](#struktur-folder)
+- [Kontak](#kontak)
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Screenshot
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+- Tampilan manajemen konten Admin
 
-## Contributing
+![alt text](image.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+- Tampilan Opsi Manajemen Konten
+![](image-2.png)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
+## Fitur
 
-## Security Vulnerabilities
+- Penjadwalan konten berbasis tanggal, jam, dan hari tayang
+- Upload konten berupa gambar dan video untuk ditayangkan di layar LCD
+- Role-based access control (Superadmin & Admin)
+- Hierarki departemen bertingkat (Universitas → Fakultas → Prodi / Unit Kerja)
+- Filter konten berdasarkan departemen dan status tayang
+- Visibilitas konten lintas departemen (parent-child)
+- Manajemen user dan departemen oleh Superadmin
+- REST API untuk dikonsumsi oleh aplikasi display ([TugasAkhirProject-User](https://github.com/raraend/TugasAkhirProject-USER.git))
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Tech Stack
+
+**Frontend**
+
+![Blade](https://img.shields.io/badge/Blade-FF2D20?logo=laravel&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?logo=bootstrap&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+
+**Backend**
+
+![Laravel](https://img.shields.io/badge/Laravel-FF2D20?logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)
+![REST API](https://img.shields.io/badge/REST_API-FF6C37?logo=postman&logoColor=white)
+
+**Database**
+
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)
+
+---
+## Arsitektur Sistem
+
+Sistem ini menyediakan REST API yang dapat digunakan oleh aplikasi display ([TugasAkhirProject-User](https://github.com/username/TugasAkhirProject-User)) untuk mengambil dan menampilkan konten terjadwal di layar LCD.
+
+**Base URL**
+http://localhost:8000/api
+![alt text](image-1.png)
+
+**Alur autentikasi:**
+
+1. User membuka Web 2 (Display) dan mengisi form login
+2. Web 2 memvalidasi input lokal, lalu meneruskan ke `POST /api/login` Web 1
+3. Web 1 memverifikasi kredensial dan mengembalikan **Sanctum Bearer Token**
+4. Web 2 menyimpan token di session server-side (tidak terekspos ke browser)
+5. Token digunakan sebagai tanda sesi aktif selama user menggunakan aplikasi
+
+**Alur sinkronisasi konten:**
+
+1. Web 2 memanggil `SyncService` untuk menarik data konten terbaru dari Web 1
+2. Data disimpan ke database lokal Web 2
+3. File media diakses via endpoint `/sync-file/{uuid}` di Web 1
+4. Web 2 menyajikan konten ke layar LCD dari database lokalnya sendiri
+
+---
+
+## Struktur Folder
+
+```
+TugasAkhirAdmin/
+├── App/
+│   ├── Http/
+        ├── Controller/ 
+            ├── ApiController/ 
+            ├── Controller/ 
+            ├── Models/
+├── Database/
+    ├── Migration/
+├── public/
+├── resource/
+    ├── css/
+    ├── js/
+    ├── views/
+├── routes/
+    ├── api.php/
+    ├── web.php/
+├── .env
+└── README.md
+```
+
+---
+
+## Kontak
+
+Rara Eva Maharani — raarevamaharani@gmail.com
+>Repositori ini dibuat sebagai bagian dari penyelesaian Tugas Akhir S1 Teknik Informatika UMY — 2025.

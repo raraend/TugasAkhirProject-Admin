@@ -14,16 +14,18 @@ class ContentApiController extends Controller
     public function index(Request $request)
     {
         $user = auth()->user();
-        $departmentId = $user->id_departments;
+        $departmentId = $user->id_departments; //ngecek user punaya departemen ngga
         
 
         // Ambil departemen anak
         $childIds = \App\Models\Department::where('parent_id', $departmentId)
-            ->pluck('id_departments')
-            ->toArray();
+            ->pluck('id_departments') //ambil dari kolom id_departments aja, bukan seluruh data departemen
+            ->toArray(); //ubah ke array biasa supaya bisa dipakai di whereIn nanti
 
-        $today = now()->toDateString();
+        $today = now()->toDateString(); //ambil tanggal hari ini dalam format Y-m-d, untuk ngecek konten yang aktif tayang hari ini
 
+
+        //ini query untuk ambil konten yang tayang hari ini, dan milik departemen sendiri atau anak yang minta tayang ke parent
         $contents = Content::where(function ($q) use ($departmentId, $childIds) {
             // Konten milik sendiri
             $q->whereHas('departments', function ($q2) use ($departmentId) {
